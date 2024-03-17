@@ -1,7 +1,8 @@
 import { $fetch } from 'ofetch'
 
 import { uuid4 } from '@/utils/Commons.js'
-import { UserTableRef, CommonUserInfo } from '@/utils/TableDaos.js'
+import { UserTableRef, UserInfo } from '@/utils/TableDaos.js'
+import { UserResponse } from '@/utils/ApiDaos.js'
 
 const typeName = "[composables]"
 const middlewareName = "[User/UserInformation]"
@@ -11,32 +12,34 @@ export const userInformationStore = defineStore(
     "UserInformation",
     () => {
         const userRef: UserTableRef = {
-            userId     : ref(null),
-            username   : ref(null),
-            kana       : ref(null),
-            thumbnailId: ref(null),
-            email      : ref(null),
+            userId       : ref(null),
+            username     : ref(null),
+            kana         : ref(null),
+            thumbnailFile: ref(null),
+            email        : ref(null),
         }
 
         // getters
-        const getUserInformation = (): CommonUserInfo => {
+        const getUserInformation = (): UserInfo => {
             console.log(loggerTemplate+"get user's information")
-            const context: CommonUserInfo = {
-                userId  : userRef.userId  .value,
-                username: userRef.username.value,
-                kana    : userRef.kana    .value,
-                email   : userRef.email   .value,
+            const context: UserInfo = {
+                userId       : userRef.userId       .value,
+                username     : userRef.username     .value,
+                kana         : userRef.kana         .value,
+                thumbnailFile: userRef.thumbnailFile.value,
+                email        : userRef.email        .value,
             }
             return context
         }
 
         // setters
-        const setUserInformation = (context: CommonUserInfo): void => {
+        const setUserInformation = (context: UserInfo): void => {
             console.log(loggerTemplate+"set user's information")
-            userRef.userId  .value = context.userId
-            userRef.username.value = context.username
-            userRef.kana    .value = context.kana
-            userRef.email   .value = context.email
+            userRef.userId       .value = context.userId
+            userRef.username     .value = context.username
+            userRef.kana         .value = context.kana
+            userRef.thumbnailFile.value = context.thumbnailFile
+            userRef.email        .value = context.email
         }
 
         // api
@@ -56,11 +59,11 @@ export const userInformationStore = defineStore(
                 throw new Error("/api/user was not OK, error="+error)
             }
 
-            const commonUserInfo: CommonUserInfo = response
-            setUserInformation(commonUserInfo)
+            const userInfo: UserInfo = response
+            setUserInformation(userInfo)
             console.log(loggerTemplate+"composable process ends.")
         }
-        
+
         return { getUserInformation, callGetUserInformationApi }
     },
     {

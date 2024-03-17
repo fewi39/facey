@@ -1,9 +1,12 @@
 [
     {
         "userId": "e6c1fa80-acea-4673-b0a7-141b36803a1a",
+        "thumbnailFile": "a0252772-f4eb-4f09-b02e-784a153754ea.png",
+        "groupName" : "役員",
+        "positionName": "社長",
         "username": "田中 太郎",
         "kana": "Tanaka Taro",
-        "thumbnailId": "a0252772-f4eb-4f09-b02e-784a153754ea",
+        "memberCode": null,
         "email": "tanaka.taro@test.com",
         "password": "testpassword1",
         "createDate": "2024-02-01 10:00:00",
@@ -11,9 +14,12 @@
     },
     {
         "userId": "ef92165a-eff3-4cf7-b124-15abfa670b1b",
+        "thumbnailFile": "7740a03d-2e11-4136-9294-fc802215042b.png",
+        "groupName" : "DB1 GP1",
+        "positionName": "一般社員",
         "username": "山本 花子",
         "kana": "Yamamoto Hanako",
-        "thumbnailId": "7740a03d-2e11-4136-9294-fc802215042b",
+        "memberCode": null,
         "email": "yamamoto.hanako@test.com",
         "password": "testpassword2",
         "createDate": "2024-02-01 10:00:00",

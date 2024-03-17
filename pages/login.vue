@@ -43,8 +43,8 @@ import PasswordField from "@/components/TextFieldComponents/PasswordField.vue"
 import CheckBoxField from '@/components/OtherFieldComponents/CheckBoxField.vue'
 import { callAuthenticateApi } from "@/composables/Auth/Authenticate.js"
 import { userInformationStore } from "@/composables/User/UserInformation.js"
-const { callGetUserInformationApi } = userInformationStore()
 import { loginStatusStore } from "@/composables/Auth/LoginStatus.js"
+const { callGetUserInformationApi } = userInformationStore()
 const { login } = loginStatusStore()
 
 const errorMessage = ref('')

@@ -2,7 +2,7 @@ import userTable from '~/assets/mock/user-table.json'
 import { UserResponse } from '~/utils/ApiDaos'
 
 const typeName = "[server]"
-const middlewareName = "[api/uer.get]"
+const middlewareName = "[api/user.get]"
 const loggerTemplate = typeName + middlewareName + " "
 
 export default defineEventHandler(async (event: any) => {
@@ -16,10 +16,11 @@ export default defineEventHandler(async (event: any) => {
         if (user.userId == query.userId) {
             console.log(loggerTemplate+"server process ends.")
             response = {
-                userId  : user.userId  ,
-                username: user.username,
-                kana    : user.kana    ,
-                email   : user.email   ,
+                userId       : user.userId       ,
+                username     : user.username     ,
+                kana         : user.kana         ,
+                thumbnailFile: user.thumbnailFile,
+                email        : user.email        ,
             }
             return response
         }
