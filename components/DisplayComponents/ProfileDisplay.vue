@@ -8,7 +8,9 @@
 const props = defineProps<{
     "imgSrc": string,
 }>()
-let src = {}
+let src = {
+    default: ""
+}
 try {
     src = await import(`@/static/thumbnailFile/${props.imgSrc}`)
 } catch (error) {
@@ -20,7 +22,7 @@ try {
 img {
     display: inline-block;
     margin: 0; padding: 0;
-    height: 100%; width: 100%;
+    height: 100%; width: auto;
     border-radius: 50%;
 }
 </style>

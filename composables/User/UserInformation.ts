@@ -63,8 +63,28 @@ export const userInformationStore = defineStore(
             setUserInformation(userInfo)
             console.log(loggerTemplate+"composable process ends.")
         }
+        const callGetFilteredUsersApi = async (context: String): Promise<UsersResponse> => {        
+            console.log(loggerTemplate+"composable process starts.")
 
-        return { getUserInformation, callGetUserInformationApi }
+            // ユーザ情報問い合わせ
+            const request = { "value": context }
+            let response:UsersResponse
+            try {
+                response = await $fetch('/api/users', {
+                    method: "GET",
+                    query : request,
+                })
+            } catch (error) {
+                console.log(loggerTemplate+"composable process ends.")
+                throw new Error("/api/users was not OK, error="+error)
+            }
+
+            console.log(loggerTemplate+"composable process ends.")
+            return response
+        }
+
+        return { getUserInformation,
+            callGetUserInformationApi, callGetFilteredUsersApi }
     },
     {
         persist: {
